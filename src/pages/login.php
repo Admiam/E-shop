@@ -78,26 +78,6 @@ if (isset($_POST['action'])) {
                 echo "<script>console.log('ERROR: Not all data');</script>";
             }
     }
-    // prihlaseni
-//    if ($_POST['action'] == 'login' && isset($_POST['login']) && isset($_POST['password'])) {
-//        // pokusim se prihlasit uzivatele
-//        $res = $myDB->userLogin($_POST['login'], $_POST['password']);
-//        if ($res) {
-//            echo "<script>
-//                // This will log a message to the console when the script is executed
-//                console.log('User was logged! Good job');
-//
-//                //        \$(\"#brand\").addClass(\"active\");
-//
-//                </script>";
-//            header("Location: index.php?page=main");
-//            exit;
-//        } else {
-//            echo "<script>console.log('ERROR: User was not logged');</script>";
-//        }
-//    }
-
-    echo "<br>";
 }
 
 // pokud je uzivatel prihlasen, tak ziskam jeho data
@@ -119,7 +99,7 @@ if ($myDB->isUserLogged()) {
 
             <!--             Brand Box -->
             <div class="col-sm-6 brand" id="brand">
-                <a href="#" class="logo"> <img src="../../assets/logo-w.png" alt="T space logo"></a>
+                <a href="index.php?page=main" class="logo"> <img src="../../assets/logo-w.png" alt="T space logo"></a>
 
                 <div class="heading title">
                     <h2>T-space</h2>

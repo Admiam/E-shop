@@ -26,7 +26,15 @@ define("WEB_PAGES", [
     'main' => "main" . $phpExtension,
     'login' => "login" . $phpExtension,
     'account' => "account" . $phpExtension,
-    'management' => "user-management" . $phpExtension
+    'users' => "users" . $phpExtension,
+    'about' => "about" . $phpExtension,
+    'contact' => "contact" . $phpExtension,
+    'warehouse' => "warehouse" . $phpExtension,
+    'fruit_tea' => "categories/fruit_tea" . $phpExtension,
+    'green_tea' => "categories/green_tea" . $phpExtension,
+    'black_tea' => "categories/black_tea" . $phpExtension,
+    'herbs_tea' => "categories/herbs_tea" . $phpExtension,
+    'white_tea' => "categories/white_tea" . $phpExtension
 ]);
 
 // defaultni/vychozi stranka webu
