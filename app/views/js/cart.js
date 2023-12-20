@@ -1,6 +1,6 @@
 /* Set rates + misc */
 var taxRate = 0.21;
-var shippingRate = 15.00;
+var shippingRate = 70.00;
 var fadeTime = 300;
 
 
@@ -40,6 +40,16 @@ function recalculateCart()
         $('#cart-tax').html(tax.toFixed(2));
         $('#cart-shipping').html(shipping.toFixed(2));
         $('#cart-total').html(total.toFixed(2));
+
+
+        // $('#input-total').val(total.toFixed(2));
+
+        var myValue = 42;
+
+// Set the value of the input field with jQuery
+        $('#input-total').val(myValue);
+
+
         if(total == 0){
             $('.checkout').fadeOut(fadeTime);
         }else{

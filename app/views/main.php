@@ -37,13 +37,7 @@ global $tplData;
     </div>
 </section>
 <section class="main-bg-white pt-5 other">
-    <div>
-        <?php
-        require("components/teaSlider.php");
-        $createSlider = new \components\teaSlider();
-        $createSlider->getTeaSlider();
-        ?>
-    </div>
+
 </section>
 <?php
 require("components/footer.php");

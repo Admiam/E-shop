@@ -1,0 +1,53 @@
+body {
+    font-family: "Courier", sans-serif;
+    background-color: whitesmoke;
+}
+.product {
+    max-width: 400px;
+    margin: 2rem auto;
+    box-shadow: 1px 1px 10px lightgray;
+    padding: 2rem;
+    background-color: white;
+}
+
+.product_title {
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.product_item {
+    padding: 1rem 0 0;
+}
+
+.product_item_price {
+    text-align: right;
+}
+
+.product_title {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 5fr 1fr 1fr;
+}
+
+.grid-container-total {
+    font-weight: bolder;
+    padding: 2rem 0 1rem;
+    display: grid;
+    grid-template-columns: 15fr 1fr;
+}
+.back {
+    text-align: center;
+    margin-top: 2rem;
+    text-decoration: none;
+    padding: 0.2rem;
+    border: 1px solid black;
+    color: black;
+}
+.back:hover {
+    background-color: black;
+    color: white;
+}

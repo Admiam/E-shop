@@ -1,0 +1,240 @@
+\documentclass[12pt, a4paper]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[IL2]{fontenc}
+\usepackage[czech]{babel}
+\usepackage{enumitem}
+\usepackage{tocloft}
+\usepackage{multicol}
+\usepackage{pdfpages}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nottoc]{tocbibind}
+
+\usepackage[
+    left=30mm, 
+    right=30mm, 
+    top=40mm, 
+    bottom=30mm,
+]{geometry}
+
+% Sazba obrázků
+\graphicspath{{Images/}} % Při vkládání obrázků se bude prefixovat tato relativní cesta.
+
+% Numbering style modification
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thefigure{\arabic{figure}}
+\renewcommand\thetable{\arabic{table}}
+
+\newcommand{\lawyertalk}{\tiny}
+
+\begin{document}
+
+% Titulní strana
+\begin{titlepage}
+    \centering      % Odtud do konce prostředí bude vše na středu,
+    \Large          % velkými písmeny
+    \sffamily       % a bezpatkovým písmem.
+
+    \includegraphics[width=.7\textwidth]{fav}
+
+    Semestrální práce z předmětu
+
+    Webové aplikace
+    
+    \vspace{18mm}
+    {\Huge\bfseries Online obchod T-space}
+
+    \vspace{18mm}
+    \today                          % Čas je získán ze systému.
+
+    \vfill                          % Vyplní prostor
+    \raggedright                    % Vše bude zarováno do leva.
+    \textsl{\lawyertalk Autor:}\\   % Vtípek z přednášky + ukázka tvorby makra a přidání sémantiky do stylu textu.
+    Adam Míka\\               % Příkaz \\ provede násilný zlom řádky.
+    A22B0319P\\
+    \texttt{mikaa@students.zcu.cz}
+    
+    \vspace{\baselineskip}
+    \textsl{Cvičící:}\\
+    Ing. Michal Nykl Ph.D.\\
+    \texttt{nyklm@ntis.zcu.cz}
+\end{titlepage}
+
+% obsah
+\tableofcontents
+
+\pagebreak
+
+\section{Zadání}
+\subsection{Nutné požadavky na všechny samostatné práce}
+
+\begin{enumerate}[left=1cm] % Nastavení odsazení pro všechny položky v seznamu
+\item Technologie - povinně HTML5, CSS, PHP a SQL (MySQL nebo jiná databáze), volitelně šablony, JavaScript, AJAX, Bootstrap apod.
+\item Aplikace musí dodržovat MVC architekturu a využívat OOP (min. controllery a model).
+\item Web má jeden vstupní soubor (obvykle index.php), který na základě parametrů URL adresy provede požadovanou akci (tj. zavolá příslušný controller) a vypíše výstup uživateli.
+\item Pro práci s databází musí být využito PDO nebo jeho ekvivalent.
+\item Web musí být chráněn proti útokům typu XSS a SQL Injection.
+\item V databázi musí být hesla hashována.
+\item Web musí využívat upload souborů.
+\item Web musí mít responzivní design (alespoň pro PC a mobil).
+\item Web musí mít alespoň 3 uživatelské role (po přihlášení v systému provádí příslušné činnosti, např. autor, recenzent, admin).
+\item K aplikaci musí být dodána dokumentace (viz dále) a skripty pro instalaci databáze (např. získané exportem databáze).
+\item Práce musí být osobně předvedena cvičícímu a po schválení odevzdána na CourseWare či Portál.
+\item Aplikaci není možné realizovat s využitím ucelených PHP frameworků (zakázáno např. Nette, Symfony atd.). Použití jejich komponent je možné pouze po schválení vyučujícím.
+\item Pro front-end je vhodné využít framework Bootstrap (getbootstrap.com) nebo jeho ekvivalent.
+
+
+\end{enumerate}
+
+
+\subsection{Dokumentace}
+\begin{enumerate}[left=1cm] % Nastavení odsazení pro všechny položky v seznamu
+\item Vaše jméno, email, datum vytvoření, název předmětu a název aplikace/tématu.
+\item URL vytvořených stránek (pokud jsou zveřejněny na serveru students.kiv.zcu.cz či jinde)
+\item Popis použitých technologií - uveďte hlavně, ve které části jste kterou technologii použili.
+\item Popis adresářové struktury aplikace - co je ve kterých adresářích a souborech.
+\item Popis architektury aplikace - co mají na starosti které třídy (popř. lze využít i UML diagramy).
+\item Seznam defaultních uživatelů včetně loginů a hesel.
+\item U alternativního zadání uveďte celé, cvičícím schválené zadání práce.
+\item Dokumentaci netiskněte, ale odevzdejte ji ve formátu PDF spolu s aplikací.
+\end{enumerate}
+
+
+
+\subsection{Hodnocení samostatné práce a získání zápočtu}
+\begin{enumerate}[left=1cm] % Nastavení odsazení pro všechny položky v seznamu
+    \item Hodnocení práce je rozděleno na povinné požadavky a volitelná rozšíření, přičemž detailní podmínky sdělí a vysvětlí každý vyučující na prvním cvičení.
+    \item Pro cvičení, která vede M.Nykl, je hodnocení uvedeno v záložce menu Hodnocení SP (Nykl).
+    \item Pro získání zápočtu je nezbytné splnit nutné požadavky a získat ze semestrální práce minimálně 20 bodů (max. 60).
+\end{enumerate}
+Dodatečné poznámky k hodnocení:
+\begin{enumerate}[left=1cm] % Nastavení odsazení pro všechny položky v seznamu
+    \item Zákaz plagiátorství - práci musí student vytvořit samostatně. Nelze ji tedy zkopírovat např. z Githubu a ani nelze "udat" starou práci ze střední školy (obvykle nesplňuje nutné požadavky). Plagiátorství je odhalováno automatizovaným systémem a hodnoceno odebráním zápočtu. 
+    \item Odevzdání práce v průběhu cvičení v ZS (tzv. do Vánoc) je ohodnoceno bonusovými body.
+    \item Bootstrap či ekvivalent - obvykle umožňují snadno zajistit responzivitu a pěkný design (dohromady hodně bodů).
+    \item Github, Bitbucket  - práce je uložena v repozitáři (snadné body; výborná záloha historie kódu).
+
+\end{enumerate}
+
+\subsection{Předvedení a odevzdání SP}
+\begin{enumerate}[left=1cm] % Nastavení odsazení pro všechny položky v seznamu
+\item Nutnou součástí odevzdání je osobní předvedení práce vyučujícímu, které je možné pouze na cvičeních nebo ve stanovených termínech (cca 3 za zkouškové období).
+\item Vytvořené webové stránky při předvádění cvičícímu poběží na počítači, ke kterému bude mít cvičící fyzický přístup (např. počítač v učebně nebo notebook, který máte s sebou). Webovým serverem bude buď localhost (127.0.0.1), nebo univerzitní server students.kiv.zcu.cz.
+\item Akceptovaná aplikace (tj. zdrojové kódy včetně dokumentace ve formátu PDF) bude odevzdána do odevzdávacího portletu na Portal či Courseware. Archiv bude pojmenovaný PRIJMENI-JMENO.ZIP a v nejvyšší úrovni adresářové struktury bude soubor readme.txt s popisem obsahu jednotlivých adresářů. Práci ale odevzdejte až po jejím akceptování vyučujícím.
+\end{enumerate}
+
+
+\section{Popis použitých technologií}
+\subsection{JavaScript}
+JavaScript je skriptovací programovací jazyk, který umožňuje interaktivitu na stránkách. Používá se pro manipulaci s obsahem HTML stránek, zpracování událostí a komunikaci s webovým serverem.
+
+\begin{lstlisting}
+    function limitT(a) {
+        if (a.length > 32) return a.substring(0, 90)+"...";
+    }
+    $("#content p").text(function() {
+        return limitT(this.innerHTML)
+    });
+\end{lstlisting}
+JavaScript je použit pro klientovou validaci vstupních formulářů, interaktivní prvky na stránce a reakci na uživatelské události.
+Například pro omezení počtu znaků v popisu produktu.
+
+\subsection{jQuery}
+% \includegraphics[width=1\textwidth]{druhy.png}
+jQuery je rychlá, malá a bohatá knihovna pro JavaScript, která zjednodušuje manipulaci s dokumentem HTML, obsluhu událostí, animace a práci s AJAXem.
+
+jQuery byl použit pro usnadnění a zjednodušení některých operací v JavaScriptu, jako například selekce elementů, manipulace s DOM a práce s AJAXem.
+
+\subsection{MVC Architektura}
+MVC (Model-View-Controller) je architektonický vzor, který rozděluje webovou aplikaci do tří základních komponent - modelu, pohledu a řadiče. To pomáhá oddělit logiku aplikace od prezentační vrstvy a usnadňuje údržbu a rozšiřitelnost.
+
+MVC architektura byla použita pro organizaci a strukturování kódu semestrální práce. Třída WhiteTeaController slouží jako řadič, který ovládá logiku pro stránku O nás, MyDatabase zastává roli modelu pro práci s databází a pohled je oddělen do samostatného souboru whitetea.php.
+
+
+
+
+
+\section{Popis adresářové struktury aplikace}
+
+\begin{enumerate}[left=1cm]
+\item assets: Obsahuje statické soubory, jako CSS styly (style.css) a JavaScriptové skripty (script.js), které jsou používány ve webové aplikaci.
+\item controllers: Obsahuje kontroléry aplikace. IController.interface.php může být rozhraním, které implementují všechny kontroléry, a whiteTeaController.php je konkrétní implementací kontroléru pro stránku O nás.
+\item models: Obsahuje modely aplikace. MyDatabase.class.php může obsahovat třídu pro práci s databází a userManage.php může zahrnovat třídu pro správu uživatelů.
+\item views: Obsahuje šablony pohledů aplikace. whitetea.php může obsahovat HTML a PHP kód pro zobrazení stránky O nás.
+\item index.php: Hlavní vstupní bod webové aplikace. Zde může být definována logika pro směrování a spouštění aplikace.
+
+\end{enumerate} 
+
+\section{Popis architektury aplikace}
+WhiteTeaController
+\begin{enumerate}[left=1cm]
+    \item Zajišťuje inicializaci a správu objektů pro práci s databází a uživateli.
+    \item Obsahuje metodu show, která zpracovává požadavky na zobrazení stránky O nás, manipuluje s daty a výsledek vrací ve formě řetězce HTML.
+\end{enumerate} 
+
+MyDatabase
+\begin{enumerate}[left=1cm]
+    \item getTea: Získává data o čaji podle zadané kategorie.
+    \item addToCart: Přidává produkt do košíku uživatele.
+    \item decrease: Sníží množství produktu v databázi.
+    \item updateQuantity: Aktualizuje množství produktu v databázi.
+\end{enumerate} 
+
+UserManage
+\begin{enumerate}[left=1cm]
+    \item userLogout: Odhlašuje uživatele.
+    \item isUserLogged: Kontroluje, zda je uživatel přihlášen.
+    \item getLoggedUserData: Získává data o přihlášeném uživateli.
+\end{enumerate}
+
+Popis vzájemných vztahů:
+\begin{enumerate}[left=1cm]
+    \item WhiteTeaController má vlastní instance tříd MyDatabase a UserManage, které využívá pro práci s databází a správu uživatelů.
+    \item MyDatabase a UserManage jsou samostatné modelové třídy pro práci s databází a uživatelskými účty.
+    \item WhiteTeaController komunikuje s MyDatabase a UserManage prostřednictvím jejich veřejných metod.
+    \item WhiteTeaController je součástí architektury MVC, kde plní roli řadiče (Controller), MyDatabase je model pro práci s daty, a UserManage je další model pro správu uživatelů.
+\end{enumerate}
+
+
+\section{Seznam defaultních uživatelů}
+
+Administrátor
+\begin{enumerate}[left=1cm]
+    \item Login: admiam
+    \item Heslo: adam
+\end{enumerate}
+
+Admin
+\begin{enumerate}[left=1cm]
+    \item Login: rychlikj
+    \item Heslo: heslo12345
+\end{enumerate}
+
+Skladník
+\begin{enumerate}[left=1cm]
+    \item Login: jensísek
+    \item Heslo: heslo12345
+\end{enumerate}
+
+Zákazník
+\begin{enumerate}[left=1cm]
+    \item Login: martinjekokos
+    \item Heslo: MaritinMaritin
+\end{enumerate}
+
+\section{Závěr}
+Veškerá architektura, adresářová struktura a implementace tříd webové aplikace byla navržena s ohledem na efektivitu, modularitu a snadnou údržbu. Aplikace využívá technologie jako JavaScript, jQuery a MVC architekturu k dosažení co nejlepší uživatelské zkušenosti a jednoduché správy kódu.
+
+Adresářová struktura byla pečlivě organizována, s oddělením statických souborů, kontrolérů, modelů, pohledů a konfiguračních souborů. Tím je dosaženo čistého oddělení zodpovědností a zvyšuje se přehlednost projektu.
+
+MVC architektura, kterou aplikace následuje, zajišťuje, že logika, data a prezentační vrstva jsou odděleny, což usnadňuje úpravy, rozšíření a testování jednotlivých částí aplikace.
+
+Celkově lze konstatovat, že navržená webová aplikace splňuje požadavky na strukturu, organizaci a efektivitu. Využívání moderních technologií a návrhových vzorů přispívá k optimálnímu vývoji a udržení kvalitního kódu. Projekt je připraven k dalšímu rozvoji, ať už se jedná o přidání nových funkcí, optimalizaci či rozšíření.
+
+\end{document}

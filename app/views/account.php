@@ -12,7 +12,7 @@
 
     <title>Tea space 👾</title>
 </head>
-<body class="bg-orange">
+<body class="bg-green">
 <?php
 ///////////////////////////////////////////////////////////////////
 ////////////// Stranka pro upravu osobnich udaju uzivatele ////////////////
@@ -35,13 +35,14 @@ global $tplData, $rights, $userData;
     ?>
 </header>
 
-<section class="screen d-flex flex-column container body-white signup form-peice">
-    <h2>Osobní údaje</h2>
+<section class="screen d-flex align-content-center flex-column container body-white signup form-peice">
+    <h1 class="title">Osobní údaje</h1>
+    <div class="d-flex justify-content-center">
     <form action="" method="POST" oninput="x.value=(pas1.value==pas2.value)?'OK':'Nestejná hesla'"
           autocomplete="off" class="signup-form"
     >
         <input type="hidden" name="user_id" value="">
-        <table>
+        <table class="">
             <tr>
                 <td>Login:</td>
                 <td><?php echo $userData['login']; ?></td>
@@ -82,6 +83,7 @@ global $tplData, $rights, $userData;
 
         <input type="submit" name="potvrzeni" value="Upravit osobní údaje">
     </form>
+    </div>
 </section>
 <?php
 require("components/footer.php");

@@ -19,7 +19,7 @@ global $tplData, $users, $rights;
         $createHeader->getHeader();
         ?>
     </header>
-    <h1 class="title color_orange">Správa uživatelů</h1>
+    <h1 class="title">Správa uživatelů</h1>
     <?php
     // projdu uzivatele a vypisu je
     echo "<div class='container'>
@@ -168,7 +168,7 @@ global $tplData, $users, $rights;
 //?>
 </body>
 <!-- Include jQuery -->
-<!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Include DataTables CSS and JS -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 <link rel="stylesheet" type="text/css"
@@ -184,38 +184,38 @@ global $tplData, $users, $rights;
 <!--        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
 <!--<script type="text/javascript" charset="utf8"-->
 <!--        src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/js/jquery.dataTables.min.js"></script>-->
-<!--<script type="text/javascript" charset="utf8"-->
-<!--        src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>-->
-<!--<script type="text/javascript" charset="utf8"-->
-<!--        src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>-->
-<!--<script>-->
-<!--    $(document).ready(function () {-->
-<!--        $("#example").DataTable({-->
-<!--            responsive: true,-->
-<!--            aaSorting: [],-->
-<!---->
-<!--            columnDefs: [-->
-<!--                {-->
-<!--                    responsivePriority: 1,-->
-<!--                    targets: 0-->
-<!--                },-->
-<!--                {-->
-<!--                    responsivePriority: 2,-->
-<!--                    targets: -1-->
-<!--                }-->
-<!--            ]-->
-<!--        });-->
-<!--        $(".dataTables_filter input")-->
-<!--            .attr("placeholder", "Search here...")-->
-<!--            .css({-->
-<!--                width: "300px",-->
-<!--                display: "inline-block"-->
-<!--            });-->
-<!---->
-<!--        $('[data-toggle="tooltip"]').tooltip();-->
-<!---->
-<!---->
-<!--    });-->
-<!---->
-<!--</script>-->
+<script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#example").DataTable({
+            responsive: true,
+            aaSorting: [],
+
+            columnDefs: [
+                {
+                    responsivePriority: 1,
+                    targets: 0
+                },
+                {
+                    responsivePriority: 2,
+                    targets: -1
+                }
+            ]
+        });
+        $(".dataTables_filter input")
+            .attr("placeholder", "Search here...")
+            .css({
+                width: "300px",
+                display: "inline-block"
+            });
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+
+    });
+
+</script>
 </html>

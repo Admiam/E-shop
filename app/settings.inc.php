@@ -204,5 +204,15 @@ const WEB_PAGES = array(
         "class_name" => "newProductController",
     ),
     //// KONEC: Přidání produktu ///
+
+    /// Přidání produktu ///
+    "summary" => array(
+        "title" => "Shrnutí objednávky",
+
+        //// kontroler ////
+        "file_name" => "sumaryController.class.php",
+        "class_name" => "sumaryController",
+    ),
+    //// KONEC: Přidání produktu ///
 );
 ?>

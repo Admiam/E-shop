@@ -19,7 +19,7 @@ global $tplData, $categories, $products;
         ?>
     </header>
     <h1 class="title">Sklad</h1>
-    <a href="index.php?page=newProduct">Přidat produkt</a>
+    <a class="add-btn" href="index.php?page=newProduct">Přidat produkt</a>
 
     <?php
     echo "<div class='container'>

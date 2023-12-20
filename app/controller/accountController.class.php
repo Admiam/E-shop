@@ -63,8 +63,11 @@ class accountController implements IController {
 
 // zpracovani odeslanych formularu
         if (isset($_POST['potvrzeni'])) {
+//            var_dump($user);
+//            echo "/////////////////////////////";
 //            var_dump($_POST);
-            // mam vsechny pozadovane hodnoty?
+
+
             if ( isset($_POST['password']) && isset($_POST['password2']) && isset($_POST['email'])
                 && $_POST['password'] == $_POST['password2']
                 && $_POST['password'] != "" && $_POST['email'] != ""
@@ -72,26 +75,25 @@ class accountController implements IController {
 
             ) {
                 // bylo zadano sprevne soucasne heslo?
-                if ($_POST['last_password'] == $userData['password']) {
+                if (password_verify($_POST['last_password'], $user['password']) || $_POST['last_password'] == $user['password']) {
                     // bylo a mam vsechny atributy - ulozim uzivatele do DB
-                    $res = $this->db->updateUser($userData['user_id'], $userData['login'], $_POST['password'], $_POST['full_name'], $_POST['email'], $userData['perm_id']);
+                    $res = $this->db->updateUser($userData['user_id'], $userData['login'], password_hash($_POST['password'], PASSWORD_BCRYPT), $_POST['full_name'], $_POST['email'], $userData['perm_id']);
                     // byl ulozen?
                     if ($res) {
-                        echo "OK: Uživatel byl upraven.";
+                        echo "<script>alert('Uživatel byl úspěšně upraven')</script>";
                         // nactu znovu jeho aktualni data
                         $userData = $this->user->getLoggedUserData();
                     } else {
-                        echo "ERROR: Upravení uživatele se nezdařilo.";
+                        echo "<script>alert('ERROR: Něco se nepovedlo')</script>";
                     }
                 } else {
                     // nebylo
-                    echo "ERROR: Zadané současné heslo uživatele není správné.";
+                    echo "<script>alert('ERROR: Údaje se neshodují')</script>";
                 }
             } else {
                 // nemam vsechny atributy
-                echo "ERROR: Nebyly přijaty požadované atributy uživatele.";
+                echo "<script>alert('ERROR: Nebyly vyplňěny všechny požadované údaje')</script>";
             }
-            echo "<br><br>";
         }
 
         ob_start();

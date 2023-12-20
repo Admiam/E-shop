@@ -682,3 +682,13 @@ table.dataTable {
 .h-full{
     height: 100%;
 }
+.add-btn{
+    background-color: var(--dark-green);
+    color: var(--secondaryColor);
+    font-size: 1rem;
+    padding: 1rem;
+    width: 10rem;
+    text-align: center;
+    margin-left: 4.5rem;
+    text-decoration: none;
+}

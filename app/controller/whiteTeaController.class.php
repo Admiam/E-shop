@@ -31,7 +31,7 @@ class whiteTeaController implements IController {
      * @return string               Výpis
      */
     public function show(string $pageTitle):string {
-        global $tplData;
+        global $tplData, $products;
         $tplData = [];
 
         $tplData['title'] = $pageTitle;
@@ -45,12 +45,34 @@ class whiteTeaController implements IController {
         if($tplData['userLogged']){
             $user = $this->user->getLoggedUserData();
             $tplData['perm_id'] = $user['perm_id'];
+            $tplData['category_id'] = 1;
         } else {
             $tplData['perm_id'] = null;
         }
 
+        $products = $this->db->getTea($tplData['category_id']);
+
+        if (isset($_POST['buy']) && isset($_POST['id'])){
+
+            $res = $this->db->addToCart($user["user_id"],$_POST['id']);
+
+            if ($res) {
+                $qa = $this->db->decrease(intval($_POST['quantity']), 1);
+
+                $res2 = $this->db->updateQuantity($_POST['id'], $qa);
+                if ($res2) {
+                    echo "<script>console.log('updated')</script>";
+                    header("Refresh:0");
+                } else {
+                    echo "<script>alert('ERROR: Něco se nepovedlo :( {update}')</script>";
+                }
+                echo "<script>console.log('add to cart')</script>";
+            } else {
+                echo "<script>alert('ERROR: Něco se nepovedlo :( {add}')</script>";
+            }
+        }
         ob_start();
-        require(DIRECTORY_VIEWS ."/categories/white_tea.php");
+        require(DIRECTORY_VIEWS ."/white_tea.php");
         $obsah = ob_get_clean();
 
         return $obsah;

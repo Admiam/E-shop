@@ -5,7 +5,7 @@ require_once(DIRECTORY_CONTROLLERS."/IController.interface.php");
 /**
  * Ovladač pro výpis stránky O nás
  */
-class blackTeaController implements IController {
+class sumaryController implements IController {
 
     /** @var MyDatabase $db  Sprava databaze. */
     private $db;
@@ -31,7 +31,7 @@ class blackTeaController implements IController {
      * @return string               Výpis
      */
     public function show(string $pageTitle):string {
-        global $tplData, $products;
+        global $tplData, $receipt, $order;
         $tplData = [];
 
         $tplData['title'] = $pageTitle;
@@ -50,28 +50,14 @@ class blackTeaController implements IController {
             $tplData['perm_id'] = null;
         }
 
-        $products = $this->db->getTea($tplData['category_id']);
+        $number = $this->db->getNumberOrder($user["user_id"]);
+        $order = $this->db->getOrder($user["user_id"], $number);
+        $receipt = $this->db->getReceipt($order["0"]["order_id"]);
+//        var_dump($receipt);
 
-        if (isset($_POST['buy']) && isset($_POST['id'])){
 
-            $res = $this->db->addToCart($user["user_id"],$_POST['id']);
-
-            if ($res) {
-                $qa = $this->db->decrease(intval($_POST['quantity']), 1);
-
-                $res2 = $this->db->updateQuantity($_POST['id'], $qa);
-                if ($res2) {
-                    echo "<script>console.log('updated')</script>";
-                } else {
-                    echo "<script>alert('ERROR: Něco se nepovedlo :( {update}')</script>";
-                }
-                echo "<script>console.log('add to cart')</script>";
-            } else {
-                echo "<script>alert('ERROR: Něco se nepovedlo :( {add}')</script>";
-            }
-        }
         ob_start();
-        require(DIRECTORY_VIEWS ."/black_tea.php");
+        require(DIRECTORY_VIEWS ."/sumary.php");
         $obsah = ob_get_clean();
 
         return $obsah;

@@ -53,7 +53,7 @@ class loginController implements IController {
         if (isset($_POST['action'])) {
             switch ($_POST['action']) {
                 case 'login':
-                    if (isset($_POST['login']) && isset($_POST['password'])) {
+                    if (isset($_POST['login']) && isset($_POST['password']) ) {
                         // pokusim se prihlasit uzivatele
                         $res = $this->user->userLogin($_POST['login'], $_POST['password']);
                         if ($res) {
@@ -63,7 +63,7 @@ class loginController implements IController {
                             header("Location: index.php?page=main");
                             exit;
                         } else {
-                            echo "<script>console.log('ERROR: User was not logged');</script>";
+                            echo "<script>alert('ERROR: User was not logged');</script>";
                         }
                     }
                     break;
@@ -81,7 +81,7 @@ class loginController implements IController {
                         // a password_verify($password, $hash) pro kontrolu hesla.
 
                         // mam vsechny atributy - ulozim uzivatele do DB
-                        $res = $this->db->addNewUser($_POST['login'], $_POST['password'], $_POST['full_name'], $_POST['email'], 4, intval($_POST['phone']), intval($_POST['postal_code']), $_POST['address'], $_POST['country'], $_POST['city']);
+                        $res = $this->db->addNewUser($_POST['login'],password_hash($_POST['password'], PASSWORD_BCRYPT), $_POST['full_name'], $_POST['email'], 4, intval($_POST['phone']), intval($_POST['postal_code']), $_POST['address'], $_POST['country'], $_POST['city']);
                         echo "Ahoj3";
                         // byl ulozen?
 //                        if ($res === false) $kokot = "kokot";

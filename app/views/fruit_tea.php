@@ -43,6 +43,7 @@
                     <h1 class='product-name' ><a href='#' style='text-decoration: none; font-size: 1.7rem'>{$p["product_name"]}</a></h1>
                     <p class='product-text'>{$p["text"]}</p>
                     <input type='hidden' name='id' value='{$p["product_id"]}'/>
+                    <input type='hidden' name='quantity' value='{$p["quantity"]}'/>
                      <a href='#' class='button' style='text-decoration: none'>                
                         <input type='submit' name='buy' value='Koupit' class='buy-tea'>
                      </a>
@@ -70,7 +71,7 @@ $getFooter->getFooter();
     function limitT(a) {
         if (a.length > 32) return a.substring(0, 90)+"...";
     }
-    console.log("ahoj");
+    // console.log("ahoj");
 
     $("#content p").text(function() {
         return limitT(this.innerHTML)

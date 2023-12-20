@@ -34,7 +34,13 @@ class userManage
      */
     public function userLogin(string $login, string $password): bool
     {
-        $where = "login='$login' AND password='$password'";
+        $hash = $this->getPassword($login);
+
+        if (!password_verify($password, $hash) && $hash != $password) {
+            return false;
+        }
+
+        $where = "login='$login' AND password='$hash'";
         $user = $this->db->selectFromTable(TABLE_USER, $where);
         // ziskal jsem uzivatele
         if (count($user)) {
@@ -42,6 +48,18 @@ class userManage
             return true;
         } else {
             return false;
+        }
+    }
+
+    public function getPassword(string $login): string
+    {
+        $where = "login='$login'";
+        $user = $this->db->selectFromTable(TABLE_USER, $where);
+        // ziskal jsem uzivatele
+        if (count($user)) {
+            return $user[0]['password'];
+        } else {
+            return "";
         }
     }
 

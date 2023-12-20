@@ -49,18 +49,17 @@ class fruitTeaController implements IController {
         } else {
             $tplData['perm_id'] = null;
         }
-//        echo "ahoj 1";
 
-//        var_dump($tplData);
-        // ziskam data vsech uzivatelu
         $products = $this->db->getTea($tplData['category_id']);
-//        echo "ahoj 1";
 
         if (isset($_POST['buy']) && isset($_POST['id'])){
+
             $res = $this->db->addToCart($user["user_id"],$_POST['id']);
+
             if ($res) {
-                $products['quantity'] = $products['quantity'] - 1;
-                $res2 = $this->db->updateQuantity($_POST['id'], $products['quantity']);
+                $qa = $this->db->decrease(intval($_POST['quantity']), 1);
+
+                $res2 = $this->db->updateQuantity($_POST['id'], $qa);
                 if ($res2) {
                     echo "<script>console.log('updated')</script>";
                 } else {
